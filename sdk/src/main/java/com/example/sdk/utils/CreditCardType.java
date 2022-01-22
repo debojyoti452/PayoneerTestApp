@@ -55,24 +55,24 @@ public enum CreditCardType {
     public static final int[] DEFAULT_BLOCK_LENGTHS = new int[]{4, 4, 4, 4, 4};
     public static final int DEFAULT_MAX_LENGTH = 4 * 5;
 
-    private String[] prefixs;
-    private int[] blockLengths;
-    private String name;
+    private String[] prefixes;
+    private final int[] blockLengths;
+    private final String name;
     // Name of Image in "drawable" folder.
-    private String imageResourceName;
+    private final String imageResourceName;
 
-    private int minLength;
-    private int maxLength;
+    private final int minLength;
+    private final int maxLength;
 
     CreditCardType(String name, String imageResourceName,
                    int minLength, int maxLength,
-                   int[] intPrefixs, int[] blockLengths) {
+                   int[] intPrefixes, int[] blockLengths) {
         this.name = name;
         this.imageResourceName = imageResourceName;
-        if (intPrefixs != null) {
-            this.prefixs = new String[intPrefixs.length];
-            for (int i = 0; i < intPrefixs.length; i++) {
-                this.prefixs[i] = String.valueOf(intPrefixs[i]);
+        if (intPrefixes != null) {
+            this.prefixes = new String[intPrefixes.length];
+            for (int i = 0; i < intPrefixes.length; i++) {
+                this.prefixes[i] = String.valueOf(intPrefixes[i]);
             }
         }
         this.minLength = minLength;
@@ -93,7 +93,7 @@ public enum CreditCardType {
     }
 
     public String[] getPrefix() {
-        return this.prefixs;
+        return this.prefixes;
     }
 
     public int[] getBlockLengths() {
@@ -136,7 +136,7 @@ public enum CreditCardType {
         CreditCardType found = null;
         int max = 0;
         for (CreditCardType type : CreditCardType.values()) {
-            for (String prefix : type.prefixs) {
+            for (String prefix : type.prefixes) {
                 if (creditCardNumber.startsWith(prefix) && prefix.length() > max) {
                     found = type;
                     max = prefix.length();
@@ -145,5 +145,4 @@ public enum CreditCardType {
         }
         return found;
     }
-
 }
