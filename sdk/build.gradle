@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    android{
+        useLibrary  'org.apache.http.legacy'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+
+    // google play core
+    implementation "androidx.annotation:annotation:$project.ext.anotation"
+
+    // Gson Lib
+    implementation "com.google.code.gson:gson:$project.ext.gsonVersion"
+
+    // Lombok
+    //noinspection AnnotationProcessorOnCompilePath
+    compileOnly  "org.projectlombok:lombok:$project.ext.lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$project.ext.lombokVersion"
+
+    implementation 'com.zsoltsafrany:needle:1.0.0'
+
+    // tests
+    testImplementation "junit:junit:$project.ext.jUnitVersion"
+    testImplementation "androidx.arch.core:core-testing:$project.ext.archVersion"
+    androidTestImplementation "androidx.test:runner:$project.ext.androidTestRunnerVersion"
+}
