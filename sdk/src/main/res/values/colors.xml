@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4993EE</color>
+    <color name="colorPrimaryDark">#930100</color>
+    <color name="colorAccent">#930100</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="statusBar">#E5E5E5</color>
+    <color name="tab_text_unselected">#948F8F</color>
+    <color name="progress">#D4D5D8</color>
+    <color name="btn_disabled">#954993EE</color>
+    <color name="home_bg">#E5E5E5</color>
+    <color name="nav_item_unchecked">#D4D5D8</color>
+    <color name="fadedblue">#A32B2D32</color>
+    <color name="darkBlue">#3E5CAA</color>
+    <color name="spinnerText">#2B2D32</color>
+    <color name="tealGreen">#34C387</color>
+    <color name="successGreen">#59C378</color>
+    <color name="lightGrey">#B7B9CD</color>
+    <color name="errorRed">#C0492C</color>
+    <color name="pendingYellow">#E89937</color>
+    <color name="secondaryTextColor">#2B2D32</color>
+    <color name="successToast">#59C378</color>
+    <color name="spinnerLightGrey">#2B2D32</color>
+    <color name="depositDescriptionColor">#2B2D32</color>
+    <color name="ubxOrange">#C0492C</color>
+    <color name="cornerColor">#EEEEEE</color>
+    <color name="shimmerGrey">#EEEEEE</color>
+    <color name="separatorColor">#B7B9C0</color>
+    <color name="pendingStatusColor">#E89937</color>
+    <color name="successStatusColor">#59C378</color>
+    <color name="cancelledStatusColor">#858997</color>
+    <color name="failedStatusColor">#C0492C</color>
+    <color name="secondaryTextColorWithAlpha">#A32B2D32</color>
+    <color name="xLightGrayColor">#F5F5F5</color>
+    <color name="lightText">#A32B2D32</color>
+    <color name="textColorWithAlpha">#A32B2D32</color>
+    <color name="light_gray">#EEEEEE</color>
+    <color name="fade_black">#CC2B2D32</color>
+    <color name="supportOptionTitleColor">#2B2D32</color>
+    <color name="blue_500">#4993EE</color>
+    <color name="blue_500_opacity_40">#B6D4F8</color>
+    <color name="black_5">#0D000000</color>
+    <color name="paginationTextColor">#2F3542</color>
+    <color name="extraLightGrayColor">#2B2D3252</color>
+    <color name="dialogLightGrayColor">#2B2D32A3</color>
+
+    <color name="borderColor">#D4D5D8</color>
+
+</resources>

@@ -1,9 +1,12 @@
-package com.example.sdk;
+package com.example.sdk.base;
+
+import android.app.Activity;
 
 import com.example.sdk.constants.UrlConstants;
 import com.example.sdk.interfaces.NetworkCallback;
 import com.example.sdk.network.Network;
 
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 
 public final class Checkout {
@@ -19,9 +22,10 @@ public final class Checkout {
 
     public void open(String query, NetworkCallback networkCallback) {
         if (networkCallback == null) {
-            throw new NullPointerException(NetworkCallback.class.getSimpleName() + " Interface in not instantiate");
+            throw new NullPointerException(NetworkCallback.class.getSimpleName() + " interface in not instantiate");
         }
-        network.verifyCardType(query, new WeakReference<>(networkCallback).get());
+
+        network.verifyCardType(query, new SoftReference<>(networkCallback).get());
     }
 
     private static void getNetwork() {

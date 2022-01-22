@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/checkout_nav"
+    app:startDestination="@id/findFragment">
+
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.example.payoneertestapp.presentation.features.checkout.FindFragment"
+        android:label="FindFragment" >
+        <action
+            android:id="@+id/action_findFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.example.payoneertestapp.presentation.features.checkout.FormFragment"
+        android:label="FormFragment" />
+</navigation>

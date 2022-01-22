@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainTextLayout"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cardCodeTI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/code"
+        app:boxBackgroundColor="@color/black_5"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="@dimen/padding_6"
+        app:boxCornerRadiusBottomStart="@dimen/padding_6"
+        app:boxCornerRadiusTopEnd="@dimen/padding_6"
+        app:boxCornerRadiusTopStart="@dimen/padding_6"
+        app:boxStrokeColor="@color/successGreen"
+        app:boxStrokeErrorColor="@android:color/holo_red_dark"
+        app:boxStrokeWidth="@dimen/padding_0"
+        app:errorIconDrawable="@null"
+        app:errorTextColor="@android:color/holo_red_dark"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/successGreen">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cardCodeET"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapCharacters"
+            android:padding="@dimen/padding_10"
+            android:textAllCaps="true"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

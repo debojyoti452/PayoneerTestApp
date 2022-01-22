@@ -1,4 +1,4 @@
-package com.example.sdk.base;
+package com.example.sdk.network;
 
 import android.text.TextUtils;
 
@@ -16,14 +16,9 @@ public final class BaseHttpClient {
 
     private static volatile BaseHttpClient baseHttpClient = null;
     private final String baseUrl;
-    final static String HEADER_AUTHORIZATION = "Authorization";
-    final static String HEADER_ACCEPT = "Accept";
-    final static String HEADER_CONTENT_TYPE = "Content-Type";
-    final static String VALUE_APP_JSON = "application/json;charset=UTF-8";
     private final static int TIMEOUT_CONNECT = 5000;
     private final static int TIMEOUT_READ = 30000;
     private final static String HEADER_USER_AGENT = "User-Agent";
-    private final static String CONTENT_TYPE_JSON = "application/json";
     private static final String USER_AGENT = "Mozilla/5.0";
 
     public BaseHttpClient(String baseUrl) {
@@ -52,7 +47,7 @@ public final class BaseHttpClient {
         } else {
             result = "Failed with response code: " + responseCode;
         }
-        
+
         con.disconnect();
         return result;
     }
@@ -63,9 +58,8 @@ public final class BaseHttpClient {
 
     private String getStringFromInputStream(final HttpURLConnection connection) throws IOException {
         try (InputStream inputStream = connection.getInputStream()) {
-            InputStreamReader ir = new InputStreamReader(inputStream);
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream(), StandardCharsets.UTF_8));
+            InputStreamReader ir = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+            BufferedReader in = new BufferedReader(ir);
             String inputLine;
             StringBuilder response = new StringBuilder();
 

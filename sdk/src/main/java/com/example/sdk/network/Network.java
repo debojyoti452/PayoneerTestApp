@@ -1,10 +1,13 @@
 package com.example.sdk.network;
 
-import com.example.sdk.base.BaseHttpClient;
+import android.os.Build;
+import android.util.Pair;
+
 import com.example.sdk.interfaces.ApiService;
 import com.example.sdk.interfaces.NetworkCallback;
 import com.example.sdk.interfaces.annotations.HTTP_GET;
 import com.example.sdk.interfaces.annotations.HTTP_POST;
+import com.example.sdk.models.ApplicableItem;
 import com.example.sdk.models.BaseNetworkModel;
 import com.example.sdk.models.Response;
 import com.google.gson.Gson;
@@ -15,10 +18,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import needle.Needle;
-import needle.UiRelatedTask;
+import needle.UiRelatedProgressTask;
 
 public final class Network {
 
@@ -61,24 +65,65 @@ public final class Network {
     }
 
     public void verifyCardType(String query, NetworkCallback networkCallback) {
-        Needle.onBackgroundThread().execute(new UiRelatedTask<String>() {
+        Needle.onBackgroundThread().execute(new UiRelatedProgressTask<Pair<ApplicableItem, String>, Integer>() {
             @Override
-            protected String doWork() {
-                String response;
+            protected Pair<ApplicableItem, String> doWork() {
+                Pair<ApplicableItem, String> responsePair = null;
                 try {
-                    response = baseHttpClient.getMethod(apply(ApiService.class).get(0));
+                    Response response =
+                            gson.fromJson(baseHttpClient
+                                    .getMethod(apply(ApiService.class)
+                                            .get(0)), Response.class);
+
+                    ApplicableItem applicableItem =
+                            isQueryFound(response.getNetworks().getApplicable(), query);
+
+                    if (applicableItem != null) {
+                        responsePair = new Pair<>(applicableItem, "Success");
+                    } else {
+                        responsePair = new Pair<>(null, "Code Not Found");
+                    }
                 } catch (IOException e) {
-                    response = e.getMessage();
-                    networkCallback.onFailed("Failed: " + response);
+                    e.getMessage();
+                    responsePair = new Pair<>(null, "Exception: " + e.getMessage());
                 }
-                return response;
+                return responsePair;
             }
 
             @Override
-            protected void thenDoUiRelatedWork(String result) {
-                networkCallback.onSuccess(gson.fromJson(result, Response.class));
+            protected void thenDoUiRelatedWork(Pair<ApplicableItem, String> result) {
+                if (result.first != null) {
+                    networkCallback.onSuccess(result.first, result.second);
+                } else {
+                    networkCallback.onFailed(result.second);
+                }
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer progress) {
+                networkCallback.onLoading(progress);
             }
         });
+    }
+
+    private ApplicableItem isQueryFound(List<ApplicableItem> applicableItemList, String query) {
+        if (!applicableItemList.isEmpty()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                return applicableItemList.stream()
+                        .filter(applicableItem -> applicableItem.getCode().toLowerCase(Locale.getDefault())
+                                .equals(query.toLowerCase(Locale.getDefault())))
+                        .findAny()
+                        .orElse(null);
+            } else {
+                for (ApplicableItem applicableItem : applicableItemList) {
+                    if (applicableItem.getCode().toLowerCase(Locale.getDefault())
+                            .equals(query.toLowerCase(Locale.getDefault()))) {
+                        return applicableItem;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public static class Builder {
