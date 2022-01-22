@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_10">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dynamicETList"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dynamicRVCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        app:cardCornerRadius="@dimen/padding_10"
+        app:contentPadding="@dimen/padding_10">
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dynamicRVList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ProgressBar
         android:id="@+id/dynamicListLoader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        app:indicatorColor="@color/colorPrimary" />
 
 </RelativeLayout>

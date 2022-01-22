@@ -66,6 +66,8 @@ public class DynamicFormRecyclerAdapter extends RecyclerView.Adapter<DynamicForm
             } else {
                 binding.cardCodeET.setImeOptions(InputRenderer.renderInputIme(0));
             }
+
+            binding.cardCodeET.addTextChangedListener(InputRenderer.renderCardView(item.getName(), binding.cardCodeET));
         }
     }
 }

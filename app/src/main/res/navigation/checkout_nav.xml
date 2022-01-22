@@ -14,6 +14,6 @@
     </fragment>
     <fragment
         android:id="@+id/formFragment"
-        android:name="com.example.payoneertestapp.presentation.features.checkout.FormFragment"
+        android:name="com.example.payoneertestapp.presentation.features.checkout.DynamicFormFragment"
         android:label="FormFragment" />
 </navigation>

@@ -1,6 +1,8 @@
 package com.example.payoneertestapp.presentation.features.checkout;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,7 @@ import com.example.payoneertestapp.presentation.adapter.DynamicFormRecyclerAdapt
 import com.example.payoneertestapp.presentation.base.AbstractBaseFragment;
 import com.example.payoneertestapp.presentation.features.viewmodel.CheckoutViewModel;
 
-public class FormFragment extends AbstractBaseFragment<FormFragmentBinding> {
+public class DynamicFormFragment extends AbstractBaseFragment<FormFragmentBinding> {
 
     private CheckoutViewModel checkoutViewModel;
     private DynamicFormRecyclerAdapter formRecyclerAdapter;
@@ -31,8 +33,8 @@ public class FormFragment extends AbstractBaseFragment<FormFragmentBinding> {
     private void init() {
         checkoutViewModel = new ViewModelProvider(requireActivity()).get(CheckoutViewModel.class);
         formRecyclerAdapter = new DynamicFormRecyclerAdapter();
-        getBinding().dynamicETList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        getBinding().dynamicETList.setAdapter(formRecyclerAdapter);
+        getBinding().dynamicRVList.setLayoutManager(new LinearLayoutManager(requireContext()));
+        getBinding().dynamicRVList.setAdapter(formRecyclerAdapter);
     }
 
     @Override
@@ -40,6 +42,11 @@ public class FormFragment extends AbstractBaseFragment<FormFragmentBinding> {
         checkoutViewModel.getLiveApplicableData().observe(getViewLifecycleOwner(), response -> {
             if (!response.first.getInputElements().isEmpty()) {
                 formRecyclerAdapter.addData(response.first.getInputElements());
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    getBinding().dynamicListLoader.setVisibility(View.INVISIBLE);
+                    getBinding().dynamicRVCard.setVisibility(View.VISIBLE);
+                }, 1000L);
+
             }
         });
     }

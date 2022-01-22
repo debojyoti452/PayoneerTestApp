@@ -2,4 +2,6 @@
     <string name="app_name">PayoneerTestApp</string>
     <string name="loading">Please wait..</string>
     <string name="field_empty">"Code field is empty"</string>
+    <string name="find">Find</string>
+    <string name="code">Code</string>
 </resources>

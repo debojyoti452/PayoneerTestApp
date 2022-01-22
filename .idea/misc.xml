@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/drawable/edittext_box_drawable.xml" value="0.1574074074074074" />
+        <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/drawable/primary_bg_drawable.xml" value="0.1574074074074074" />
+        <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/drawable/primary_disabled_btn_drawable.xml" value="0.1574074074074074" />
+        <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/drawable/primary_enable_btn_drawable.xml" value="0.1574074074074074" />
         <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/layout/activity_checkout.xml" value="0.1984375" />
         <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/AndroidProject/Testing/PayoneerTestApp/app/src/main/res/layout/find_fragment.xml" value="0.1984375" />

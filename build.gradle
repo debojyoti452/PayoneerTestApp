@@ -42,6 +42,9 @@ allprojects {
         navCompVersion = "2.3.5"
 
         progressButtonVersion = "2.1.0"
+        truthVersion = "1.1.3"
+        mockkVersion = "1.9.3"
+        jUniXVersion = "1.1.3"
     }
 }
 

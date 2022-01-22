@@ -10,11 +10,9 @@ public class ApplicableItem{
 	String code;
 	String method;
 	String registration;
-	Links links;
 	String operationType;
 	String label;
 	String grouping;
 	boolean selected;
 	List<InputElementsItem> inputElements;
-	ContractData contractData;
 }
